@@ -9,7 +9,9 @@ class Alien(Sprite):
         self.settings = ai_game.settings
 
         # Load the alien image
-        self.image = pygame.transform.scale(pygame.image.load('images/alien.bmp'), (60, 60))
+        self.image = pygame.transform.scale(
+            pygame.image.load("images/alien.bmp"), (60, 60)
+        )
         self.rect = self.image.get_rect()
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
@@ -23,5 +25,5 @@ class Alien(Sprite):
 
     def update(self):
         # Move the alien left/right
-        self.x += (self.settings.alien_speed * self.settings.fleet_direction)
+        self.x += self.settings.alien_speed * self.settings.fleet_direction
         self.rect.x = self.x

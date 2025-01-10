@@ -105,7 +105,8 @@ class AlienInvasion:
     def _check_bullet_alien_collisions(self):
         # Check if bullets have hit aliens
         collisions = pygame.sprite.groupcollide(
-            self.bullets, self.aliens, True, True)
+            self.bullets, self.aliens, True, True
+        )
         if collisions:
             for aliens in collisions.values():
                 self.score += len(aliens)
@@ -131,12 +132,13 @@ class AlienInvasion:
         aliens = Alien(self)
         alien_width, alien_height = aliens.rect.size
 
-        available_space_x = self.settings.screen_width - (2*alien_width)
+        available_space_x = self.settings.screen_width - (2 * alien_width)
         number_aliens_x = available_space_x // (2 * alien_width)
 
         ship_height = self.ship.rect.height
-        available_space_y = (self.settings.screen_height -
-                             (3 * alien_height) - ship_height)
+        available_space_y = (
+            self.settings.screen_height - (3 * alien_height) - ship_height
+        )
         number_rows = available_space_y // (2 * alien_height)
 
         # Create full fleet
@@ -214,14 +216,18 @@ class AlienInvasion:
 
         # Display score
         score_text = font.render(
-            "Score: " + str(self.score), True, (255, 255, 255))
+            "Score: " + str(self.score), True, (255, 255, 255)
+        )
         score_rect = score_text.get_rect()
         score_rect.top = 10
         score_rect.right = self.screen_rect.right - 10
 
         # Display lives
         lives_text = font.render(
-            "Remaining Ships: " + str(self.stats.ships_left), True, (255, 255, 255))
+            "Remaining Ships: " + str(self.stats.ships_left),
+            True,
+            (255, 255, 255),
+        )
         lives_rect = lives_text.get_rect()
         lives_rect.top = score_rect.bottom + 10
         lives_rect.right = self.screen_rect.right - 10
@@ -230,7 +236,7 @@ class AlienInvasion:
         self.screen.blit(lives_text, lives_rect)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     ai = AlienInvasion()
     ai.run_game()
